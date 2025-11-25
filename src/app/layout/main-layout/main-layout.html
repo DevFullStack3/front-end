@@ -1,0 +1,32 @@
+<header>
+  <mat-toolbar class="m-0">
+    <button matIconButton aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>My App</span>
+  </mat-toolbar>
+</header>
+
+<main>
+  <mat-drawer-container autosize>
+
+    <mat-drawer #drawer mode="side" opened>
+      <mat-nav-list>
+        @for (link of list(); track link) {
+          <a
+            mat-list-item
+            [routerLink]="[link.ruta]"
+            [routerLinkActive]="['link-active']"
+          >{{ link.titulo }}</a>
+        }
+      </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+
+  </mat-drawer-container>
+</main>
+<footer>
+  Footer
+</footer>

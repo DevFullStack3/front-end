@@ -1,0 +1,12 @@
+main, mat-drawer-container, mat-drawer-content {
+  min-height: 100vh;
+}
+
+mat-drawer {
+  margin-top: 0;
+  width: 250px;
+}
+
+.link-active {
+  font-size: 120%;
+}

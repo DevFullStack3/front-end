@@ -1,0 +1,20 @@
+<h1 class="text-center">Ingresar Usuario</h1>
+<div class="container-fluid d-flex justify-content-center">
+  <form class="row d-flex w-75 d-flex justify-content-center">
+    <mat-form-field class="col m-1">
+      <mat-label>Nombre</mat-label>
+      <input type="text" matInput placeholder="Nombre..">
+    </mat-form-field>
+
+    <mat-form-field class="col m-1">
+      <mat-label>Apellido</mat-label>
+      <input type="text" matInput placeholder="Apellido..">
+    </mat-form-field>
+
+    <mat-form-field class="col m-1">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput placeholder="Ex. pat@example.com">
+    </mat-form-field>
+    <button class="btn btn-primary" (click)="addUser()">Ingresar</button>
+  </form>
+</div>

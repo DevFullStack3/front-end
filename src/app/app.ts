@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {MainLayout} from './layout/main-layout/main-layout';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  template: `<app-main-layout/>`,
+  styleUrl: './app.css',
+  imports: [
+    MainLayout
+  ]
 })
-export class App {
-  protected title = 'laboratorio';
-}
+export class App {}
