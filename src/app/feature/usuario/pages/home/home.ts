@@ -27,9 +27,4 @@ export class Home implements OnInit {
     this.store.dispatch(listUsuarioAction());
     console.log(this.usuarios());
   }
-
-  addUsuario(){
-    const usuarioNew: UsuarioModel = {nombre: 'Kevin', apellido: 'Perez', email: 'prueba@correo.cl', password: '<PASSWORD>', userName: 'kevin', activo: 'true'};
-    this.store.dispatch(addUsuarioAction(usuarioNew));
-  }
 }
