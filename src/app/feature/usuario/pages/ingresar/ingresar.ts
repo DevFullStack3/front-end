@@ -23,9 +23,9 @@ export class Ingresar {
 
 
   form = signal(this.builder.group({
-    nombre: ['', Validators.required, Validators.minLength(3)],
-    apellido: ['', Validators.required, Validators.minLength(3)],
-    email: ['', Validators.required, Validators.email],
+    nombre: ['', [Validators.required, Validators.minLength(3)]],
+    apellido: ['', [Validators.required, Validators.minLength(3)]],
+    email: ['', [Validators.required, Validators.email]],
   }));
 
 

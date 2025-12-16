@@ -1,7 +1,13 @@
 import {Action} from '@ngrx/store';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {inject} from '@angular/core';
-import {addUsuarioAction, addUsuarioOkAction, listUsuarioAction, listUsuarioOkAction} from './usuario.actions';
+import {
+  addUsuarioAction,
+  addUsuarioOkAction,
+  deleteUsuarioAction, deleteUsuarioOkAction,
+  listUsuarioAction,
+  listUsuarioOkAction
+} from './usuario.actions';
 import {map, mergeMap, of, switchMap} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UsuarioModel} from './usuario.model';
@@ -37,5 +43,12 @@ export default class UsuarioEffects {
       .pipe(
         map(usuarios => listUsuarioOkAction({usuarios}))
       ))
+  ));
+
+  readonly deleteUsuario$ = createEffect(() => this.actions$.pipe(
+    ofType(deleteUsuarioAction),
+    switchMap((id) => this._http.delete('/usuario', { headers: this.headers, body: id }).pipe(
+      map(() => deleteUsuarioOkAction(id))
+    ))
   ));
 }
