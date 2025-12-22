@@ -12,8 +12,18 @@
     </mat-form-field>
 
     <mat-form-field class="col m-1">
+      <mat-label>Username</mat-label>
+      <input type="text" matInput placeholder="Apellido.." formControlName="userName">
+    </mat-form-field>
+
+    <mat-form-field class="col m-1">
       <mat-label>Email</mat-label>
       <input type="email" matInput placeholder="Ex. pat@example.com" formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field class="col m-1">
+      <mat-label>Contraseña</mat-label>
+      <input type="password" matInput placeholder="Ex. pat@example.com" formControlName="pass">
     </mat-form-field>
     <button class="btn btn-primary" (click)="addUser()">Ingresar</button>
   </form>

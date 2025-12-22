@@ -25,6 +25,8 @@ export class Ingresar {
   form = signal(this.builder.group({
     nombre: ['', [Validators.required, Validators.minLength(3)]],
     apellido: ['', [Validators.required, Validators.minLength(3)]],
+    userName: ['', [Validators.required, Validators.minLength(3)]],
+    pass: ['', [Validators.required, Validators.minLength(12)]],
     email: ['', [Validators.required, Validators.email]],
   }));
 
@@ -32,8 +34,14 @@ export class Ingresar {
 
   addUser(){
     if (!this.form().valid) return;
-    const usuarioNew: UsuarioModel = {nombre: this.form().value.nombre||'', apellido: this.form().value.apellido||'', email: this.form().value.email||'', password: '<PASSWORD>', userName: this.form().value.nombre||'', activo: 'true'};
+    const usuarioNew: UsuarioModel = {
+      nombre: this.form().value.nombre||'',
+      apellido: this.form().value.apellido||'',
+      email: this.form().value.email||'',
+      password: this.form().value.pass||'',
+      userName: this.form().value.userName||'',
+      activo: 'true'};
     this.store.dispatch(addUsuarioAction(usuarioNew));
-    this.router.navigate(['/usuarios']);
+    // this.router.navigate(['/usuarios']);
   }
 }

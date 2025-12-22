@@ -25,7 +25,7 @@ export class Home implements OnInit {
   usuarios = toSignal(this.store.select(getUsuario), {
     initialValue: [] as UsuarioModel[],
   });
-  displayedColumns: string[] = ['nombre', 'apellido', 'email', 'acciones'];
+  displayedColumns: string[] = ['nombre', 'apellido', 'username', 'email', 'acciones'];
 
   ngOnInit() {
     this.store.dispatch(listUsuarioAction());

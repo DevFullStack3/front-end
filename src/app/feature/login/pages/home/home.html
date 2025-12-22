@@ -1,0 +1,15 @@
+<section class="container-fluid d-flex align-items-center justify-content-center">
+  <div class="row w-25 p-3 d-flex text-center" [formGroup]="form">
+    <h2>Login</h2>
+    <mat-form-field class="col-12 m-1">
+      <mat-label>Usuario</mat-label>
+      <input (keyup)="formValid()" type="text" matInput placeholder="Usuario.." formControlName="userName">
+    </mat-form-field>
+    <mat-form-field class="col-12 m-1">
+      <mat-label>Contraseña</mat-label>
+      <input (keyup)="formValid()" type="password" matInput placeholder="Contraseña.." formControlName="password">
+    </mat-form-field>
+    <button class="mb-2" matButton="filled" (click)="iniciarSesion()" [disabled]="disabledForm()">Iniciar Sesion</button>
+    <button matButton="filled" [routerLink]="['/registro']">Registrarme</button>
+  </div>
+</section>

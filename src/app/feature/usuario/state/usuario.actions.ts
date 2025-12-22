@@ -3,6 +3,7 @@ import {UsuarioModel} from './usuario.model';
 
 export const addUsuarioAction = createAction('[Usuario] Add Usuario', props<UsuarioModel>());
 export const addUsuarioOkAction = createAction('[Usuario] Add Ok Usuario', props<UsuarioModel>());
+export const addUsuarioErrorAction = createAction('[Usuario] Add Error Usuario', props<{error:string}>());
 
 export const listUsuarioAction = createAction('[Usuario] List Usuario');
 export const listUsuarioOkAction = createAction('[Usuario] List Ok Usuario', props<{usuarios:UsuarioModel[]}>());

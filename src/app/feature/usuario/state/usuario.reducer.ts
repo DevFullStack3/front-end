@@ -1,11 +1,12 @@
 import {createReducer, on, props} from '@ngrx/store';
 import { UsuarioModel } from './usuario.model';
-import {addUsuarioOkAction, deleteUsuarioOkAction, listUsuarioOkAction} from './usuario.actions';
+import {addUsuarioErrorAction, addUsuarioOkAction, deleteUsuarioOkAction, listUsuarioOkAction} from './usuario.actions';
 
 const initialState: UsuarioModel[] = [];
 
 export const usuarioReducer = createReducer(initialState,
   on(addUsuarioOkAction, (state, props) => [...state, props]),
+  on(addUsuarioErrorAction, () => initialState),
 
 
   on(listUsuarioOkAction, ((state, {usuarios}) => usuarios)),

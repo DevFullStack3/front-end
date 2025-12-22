@@ -2,26 +2,26 @@ import {Action} from '@ngrx/store';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {inject} from '@angular/core';
 import {
-  addUsuarioAction,
+  addUsuarioAction, addUsuarioErrorAction,
   addUsuarioOkAction,
   deleteUsuarioAction, deleteUsuarioOkAction,
   listUsuarioAction,
   listUsuarioOkAction
 } from './usuario.actions';
-import {map, mergeMap, of, switchMap} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {catchError, map, mergeMap, of, switchMap} from 'rxjs';
+import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {UsuarioModel} from './usuario.model';
 
 
 export default class UsuarioEffects {
-  usuario = 'admin';
-  password = 'admin123';
+  private get headers(): HttpHeaders {
+    const token = sessionStorage.getItem('token') || '';
+    return new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
+  }
 
-  basicAuth = 'Basic ' + btoa(`${this.usuario}:${this.password}`);
-
-  headers = new HttpHeaders({
-    Authorization: this.basicAuth
-  });
 
   actions$: Actions<Action<string>> = inject(Actions);
 
@@ -31,7 +31,13 @@ export default class UsuarioEffects {
     ofType(addUsuarioAction),
     switchMap((action) =>
       this._http.post<UsuarioModel>('/usuario', action, { headers: this.headers }).pipe(
-        map(usuario => addUsuarioOkAction(usuario))
+        map((usuario) => {
+          alert('Usuario creado correctamente');
+          return addUsuarioOkAction(usuario)}),
+        catchError((error: HttpErrorResponse) => {
+          alert(error.error.description);
+          return of(addUsuarioErrorAction({ error: error.message }));
+        })
       )
     )
 

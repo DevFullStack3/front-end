@@ -1,0 +1,25 @@
+section {
+  background-image: url("/images/img1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  position: relative;
+}
+
+section .row {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 2%;
+
+  /* Efecto glassmorphism */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* Sombra suave */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+
+  /* Padding para el contenido */
+  padding: 20px;
+  margin: 20px;
+}

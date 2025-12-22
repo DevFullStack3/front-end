@@ -1,0 +1,27 @@
+<section class="container-fluid d-flex align-items-center justify-content-center">
+  <div class="row w-25 p-3 d-flex text-center" [formGroup]="form">
+    <h2>Registro</h2>
+    <mat-form-field class="col-12 m-1">
+      <mat-label>Nombre</mat-label>
+      <input (keyup)="formValid()" type="text" matInput placeholder="Nombre.." formControlName="nombre">
+    </mat-form-field>
+    <mat-form-field class="col-12 m-1">
+      <mat-label>Apellido</mat-label>
+      <input (keyup)="formValid()" type="text" matInput placeholder="Apellido.." formControlName="apellido">
+    </mat-form-field>
+    <mat-form-field class="col-12 m-1">
+      <mat-label>Usuario</mat-label>
+      <input (keyup)="formValid()" type="text" matInput placeholder="Usuario.." formControlName="userName">
+    </mat-form-field>
+    <mat-form-field class="col m-1">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput placeholder="Ex. pat@example.com" formControlName="email">
+    </mat-form-field>
+    <mat-form-field class="col-12 m-1">
+      <mat-label>Contraseña</mat-label>
+      <input (keyup)="formValid()" type="password" matInput placeholder="Contraseña.." formControlName="password">
+    </mat-form-field>
+    <button class="mb-2" matButton="filled" [disabled]="disabledForm()" (click)="registrarUsuario()">Registrarme</button>
+    <button matButton="filled" [routerLink]="['/login']">Ir al Login</button>
+  </div>
+</section>
